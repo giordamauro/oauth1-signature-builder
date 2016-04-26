@@ -9,15 +9,15 @@ import java.util.Objects;
  */
 public class HttpParameter implements Comparable<HttpParameter> {
 
-    private final String key;
+    private final String name;
     private final String value;
 
-    public HttpParameter(String key, String value) {
+    public HttpParameter(String name, String value) {
         
-    	Objects.requireNonNull(key, "Key cannot be null");
+    	Objects.requireNonNull(name, "Key cannot be null");
     	Objects.requireNonNull(value, "Value cannot be null");
     	
-    	this.key = key;
+    	this.name = name;
         this.value = value;
     }
 
@@ -34,11 +34,11 @@ public class HttpParameter implements Comparable<HttpParameter> {
         }
 
         final HttpParameter otherParam = (HttpParameter) other;
-        return otherParam.getKey().equals(key) && otherParam.getValue().equals(value);
+        return otherParam.getName().equals(name) && otherParam.getValue().equals(value);
     }
 
-    public String getKey() {
-        return key;
+    public String getName() {
+        return name;
     }
 
     public String getValue() {
@@ -47,12 +47,12 @@ public class HttpParameter implements Comparable<HttpParameter> {
 
     @Override
     public int hashCode() {
-        return key.hashCode() + value.hashCode();
+        return name.hashCode() + value.hashCode();
     }
 
     @Override
     public int compareTo(HttpParameter parameter) {
-        final int keyDiff = key.compareTo(parameter.getKey());
+        final int keyDiff = name.compareTo(parameter.getName());
 
         return keyDiff == 0 ? value.compareTo(parameter.getValue()) : keyDiff;
     }

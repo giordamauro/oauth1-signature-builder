@@ -49,7 +49,7 @@ class OAuthBaseStringGenerator {
 	public String getUrlEncodedParams(List<HttpParameter> params) {
 		
 		String urlEncodedParams = params.stream()
-                .map(param -> String.format("%s=%s", OAuthEncoder.encode(param.getKey()), OAuthEncoder.encode(param.getValue())))
+                .map(param -> String.format("%s=%s", OAuthEncoder.encode(param.getName()), OAuthEncoder.encode(param.getValue())))
                 .collect(Collectors.joining("&"));
 
 		return urlEncodedParams;
